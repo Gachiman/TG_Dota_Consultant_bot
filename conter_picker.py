@@ -1,7 +1,6 @@
 import dotabuff_parse
 import json
 from decimal import Decimal
-import language
 
 
 heroes_slang = None
@@ -87,9 +86,9 @@ class Picker:
         if len(selected_heroes) > 1:
             for hero in selected_heroes:
                 suggestion.pop(hero)
-        suggestion = sorted(suggestion.items(), key=lambda y: y[1])
+        suggestion = sorted(suggestion.items(), key=lambda y: y[1], reverse=True)
 
-        suggestion = [f'{heroes_names_list[hero[0]]}: {hero[1]}' for hero in suggestion]
+        suggestion = [f'{heroes_names_list[hero[0]]}: {str(hero[1]).lstrip("-")}' for hero in suggestion]
         shown_message = '\n'.join(suggestion)
 
         return self.lang.cp_show_suggestion.format(shown_message)
@@ -110,17 +109,4 @@ class Picker:
 
 
 if __name__ == '__main__':
-    x = Picker(lang=language.Russian())
-    x.enemy_add('ам')
-    x.enemy_add('абадон')
-    x.enemy_add('Алхимик')
-    x.enemy_add('аппарат')
-    x.enemy_add('варден')
-
-    x.ally_add('акс')
-    x.ally_add('бейн')
-    x.ally_add('бетрайдер')
-    x.ally_add('бист')
-
-    # print(x.show_suggestions())
-    x.show_suggestions()
+    pass

@@ -7,7 +7,6 @@ import language
 
 bot = telebot.TeleBot(config.TOKEN)
 
-chatStatus = {}
 lang = {}
 steam_id = {}
 picker = {}
